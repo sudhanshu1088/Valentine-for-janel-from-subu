@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Will You Be My Valentine?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+    }
+    .card {
+      background: white;
+      padding: 30px 25px;
+      border-radius: 20px;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      animation: pop 1s ease;
+    }
+    @keyframes pop {
+      0% { transform: scale(0.7); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    h1 { color: #ff4d6d; }
+    p { color: #444; }
+    .btns {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    button {
+      border: none;
+      padding: 12px 25px;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .yes {
+      background: #ff4d6d;
+      color: white;
+    }
+    .no {
+      background: #eee;
+      color: #333;
+    }
+    .hidden { display: none; }
+    .hearts span {
+      position: absolute;
+      font-size: 20px;
+      animation: float 5s linear infinite;
+    }
+    @keyframes float {
+      from { transform: translateY(0); opacity: 1; }
+      to { transform: translateY(-100vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card" id="card">
+  <h1>Hey Janel Anthony ❤️</h1>
+  <p>Every moment with you feels special ✨</p>
+  <h2>Will you be my Valentine? 💘</h2>
+  <div class="btns">
+    <button class="yes" onclick="yesClick()">Yes 💖</button>
+    <button class="no" onmouseover="moveNo()">No 🙈</button>
+  </div>
+</div>
+
+<div class="card hidden" id="final">
+  <h1>Yayyy 🥰</h1>
+  <p>Happy Valentine’s Day ❤️</p>
+</div>
+
+<div class="hearts" id="hearts"></div>
+
+<script>
+function yesClick() {
+  document.getElementById("card").classList.add("hidden");
+  document.getElementById("final").classList.remove("hidden");
+  for(let i=0;i<25;i++){
+    let h=document.createElement("span");
+    h.innerHTML="❤️";
+    h.style.left=Math.random()*100+"vw";
+    h.style.top="100vh";
+    h.style.animationDuration=(Math.random()*3+3)+"s";
+    document.getElementById("hearts").appendChild(h);
+  }
+}
+function moveNo() {
+  document.querySelector(".no").style.transform =
+    "translate("+(Math.random()*200-100)+"px,"+(Math.random()*200-100)+"px)";
+}
+</script>
+
+</body>
+</html>
